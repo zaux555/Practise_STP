@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STP Master - Layer 2 Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="game-header">
+            <h1>STP <span class="highlight">MASTER</span></h1>
+            <div class="status-panel">
+                <div class="scenario-info">
+                    <span id="scenario-name">Scenario 1: The Triangle</span>
+                    <span class="difficulty-badge" id="difficulty">EASY</span>
+                </div>
+                <div class="score-board">
+                    <span>Correct: <span id="score-correct">0</span></span>
+                    <span>Errors: <span id="score-errors">0</span></span>
+                </div>
+            </div>
+        </header>
+
+        <div id="main-menu" class="menu-overlay">
+            <div class="menu-card gallery-mode">
+                <header class="menu-header">
+                    <h2>Select Challenge</h2>
+                    <p>Choose a topology to master</p>
+                </header>
+
+                <div class="gallery-container">
+                    <div class="level-list" id="level-list">
+                        <!-- Populated by JS -->
+                        <!-- Example: 
+                        <div class="level-item active">
+                            <span class="lvl-badge easy">EASY</span>
+                            <span class="lvl-name">The Triangle</span>
+                        </div> 
+                        -->
+                    </div>
+
+                    <div class="level-preview">
+                        <div id="preview-canvas"></div>
+                        <div class="preview-info">
+                            <h3 id="prev-title">Select a Level</h3>
+                            <p id="prev-desc">Description will appear here.</p>
+                            <button id="btn-start-level" class="btn primary" disabled>START SIMULATION</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main id="game-interface" class="game-area hidden">
+            <div id="topology-container" class="topology-canvas">
+                <!-- SVG Topology will be rendered here via JS -->
+                <button id="btn-back-menu" class="back-btn">← Menu</button>
+                <svg id="svg-layer" width="800" height="500"></svg>
+                <div id="ui-layer"></div>
+            </div>
+
+            <aside class="controls-panel">
+                <div class="instruction-box">
+                    <h3>Misión</h3>
+                    <p>1. Identifica el <strong>Root Bridge</strong> (Click en el switch).</p>
+                    <p>2. Marca los puertos (Click en el puerto):</p>
+                    <ul class="legend">
+                        <li><span class="legend-dot root-port"></span> Root Port (RP)</li>
+                        <li><span class="legend-dot designated-port"></span> Desg. Port (DP)</li>
+                        <li><span class="legend-dot blocking-port"></span> Blocking (BLK)</li>
+                    </ul>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btn-reset" class="btn secondary">Reiniciar</button>
+                    <button id="btn-check" class="btn primary">Verificar STP</button>
+                    <button id="btn-next" class="btn success hidden">Siguiente Nivel</button>
+                </div>
+
+                <div id="feedback-area" class="feedback-message"></div>
+
+                <div id="explanation-container" class="explanation-box hidden">
+                    <h4>📝 Análisis Detallado</h4>
+                    <div id="explanation-content"></div>
+                </div>
+            </aside>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
